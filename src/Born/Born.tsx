@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react'
 import { Icon, DatePicker, ProgressIndicator, PrimaryButton } from '@fluentui/react'
 import './Born.css'
 
-const defaultTime = new Date('1999-06-05 00:00')
+const defaultTime = new Date(localStorage.getItem('Date') || '1999-06-05 00:00')
 
 const getAge = (bornTime: Date): string => {
     const time = (new Date().getTime() - bornTime.getTime()) / 60 / 60 / 24 / 365.242 / 1000
@@ -35,6 +35,14 @@ export const Born: React.FunctionComponent = () => {
         )
     }
 
+    const handleSelectDate = (selectedDate: Date | null | undefined) => {
+        setbornTime(selectedDate || defaultTime)
+    }
+
+    useEffect(() => {
+        localStorage.setItem('Date', bornTime.toString())
+    }, [bornTime])
+
     return (
         <div className='o-born'>
             <div className='o-born-inner'>
@@ -42,9 +50,7 @@ export const Born: React.FunctionComponent = () => {
                 <Progress/>
                 <DatePicker
                     placeholder="选择一个时间……"
-                    onSelectDate={
-                        setSelectedDate => setbornTime(setSelectedDate || defaultTime) 
-                    }
+                    onSelectDate={handleSelectDate}
                     initialPickerDate={bornTime}
                     value={bornTime}
                     maxDate={new Date()}
