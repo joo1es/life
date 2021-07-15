@@ -21,6 +21,10 @@ export const Born: React.FunctionComponent = () => {
         return () => clearInterval(timer)
     })
 
+    useEffect(() => {
+        document.title = '生辰'
+    })
+
     const progressLabel = useMemo(() => {
         return `距出生的 ${bornTime.getFullYear()} 年，你已经 ${nowAge} 岁了`
     }, [bornTime, nowAge])
