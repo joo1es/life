@@ -1,0 +1,17 @@
+.o-born {
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.o-born-inner {
+    width: 100%;
+    max-width: 600px;
+}
+
+.o-born-inner-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+}

@@ -4,6 +4,9 @@ import { App } from './App';
 import { mergeStyles } from '@fluentui/react';
 import reportWebVitals from './reportWebVitals';
 
+import { initializeIcons } from '@fluentui/font-icons-mdl2';
+initializeIcons();
+
 // Inject some global styles
 mergeStyles({
   ':global(body,html,#root)': {
